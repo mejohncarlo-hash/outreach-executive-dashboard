@@ -1,0 +1,33 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "outreach-dashboard-portfolio",
+  "main": "./cloudflare/worker.ts",
+  "compatibility_date": "2026-05-22",
+  "workers_dev": true,
+  "assets": {
+    "directory": "./cloudflare-dist",
+    "binding": "ASSETS",
+    "not_found_handling": "single-page-application",
+    "run_worker_first": [
+      "/*"
+    ]
+  },
+  "d1_databases": [
+    {
+      "binding": "LINK_SCANNER_DB",
+      "database_name": "portfolio-link-scanner",
+      "database_id": "00000000-0000-4000-8000-000000000000",
+      "migrations_dir": "migrations"
+    }
+  ],
+  "vars": {
+    "AUTH_ADMIN_EMAIL": "admin@example.com",
+    "NOTION_DATA_SOURCE_ID": "",
+    "NOTION_PLACEMENTS_DATA_SOURCE_ID": "",
+    "NOTION_SUPPORTED_WEBSITES_DATA_SOURCE_ID": "",
+    "NOTION_STATUS_HISTORY_DATA_SOURCE_ID": ""
+  },
+  "observability": {
+    "enabled": true
+  }
+}
